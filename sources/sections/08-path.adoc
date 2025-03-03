@@ -1,0 +1,6 @@
+[[path]]
+== iCalendar Path
+
+This specification makes use of the concept of an "iCalendar path" defined in
+Section XX of [draft-patch]. This specification only makes use of "relative"
+paths to identify components or properties directly within a generated instance.

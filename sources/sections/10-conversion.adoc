@@ -1,0 +1,9 @@
+== Conversion to/from VINSTANCE
+
+Any iCalendar processing engine that supports "VINSTANCE" is allowed to convert
+between the traditional overridden component representation and the "VINSTANCE"
+based representation when processing iCalendar data. However, iCalendar data SHOULD
+NOT mix traditional and "VINSTANCE" based representations in the same iCalendar
+object. However, when iCalendar data is transferred to another system whose support
+for "VINSTANCE" cannot be confirmed, the iCalendar data being transferred MUST be
+converted into its traditional overridden component representation.

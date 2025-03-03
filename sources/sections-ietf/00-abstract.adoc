@@ -1,0 +1,10 @@
+[abstract]
+== Abstract
+
+This document updates the iCalendar (<<RFC5545>>) specification to allow a more compact representation of overridden recurrence instances.
+
+[NOTE,title=Open Issues]
+====
+* Smart, incremental RANGE=THISANDFUTURE processing?
+* Should we bump the VERSION to 2.1?
+====

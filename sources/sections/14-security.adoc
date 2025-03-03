@@ -1,0 +1,5 @@
+== Security Considerations
+
+Security considerations described in <<RFC5545>>, and <<RFC4791>> `MUST` be adhered
+to. Since this specification merely defines an alternative representation in iCalendar
+data, it does not introduce any new security considerations.

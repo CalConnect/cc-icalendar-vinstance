@@ -1,0 +1,68 @@
+= The iCalendar VINSTANCE Component
+:doctype: internet-draft
+:name: draft-daboo-icalendar-vinstance-00
+:status: standard
+:ipr: trust200902
+:area: Applications
+:intended-series: full-standard
+:workgroup: Network Working Group
+:keyword: calendaring, iCalendar, iTIP, CalDAV, HTTP, Recurrence
+:published-date: 2016-10-28
+:fullname: Cyrus Daboo
+:lastname: Daboo
+:forename_initials: C.
+:affiliation: Apple Inc.
+:address: 1 Infinite Loop + \
+Cupertino, CA 95014 + \
+USA
+:email: cyrus@daboo.name
+:contributor-uri: http://www.apple.com/
+:updates: IETF RFC 5545
+:mn-document-class: ietf
+:mn-output-extensions: xml,rfc,txt,html,rxl
+:local-cache-only:
+:data-uri-image:
+
+include::sections-ietf/00-abstract.adoc[]
+
+include::sections/01-intro.adoc[]
+
+include::sections-ietf/02-conventions.adoc[]
+
+include::sections/03-overview.adoc[]
+
+include::sections/04-vinstance-component.adoc[]
+
+include::sections/05-instance-components.adoc[]
+
+include::sections/06-instance-properties.adoc[]
+
+include::sections/07-instance-delete.adoc[]
+
+include::sections/08-path.adoc[]
+
+include::sections/09-extensions.adoc[]
+
+include::sections/10-conversion.adoc[]
+
+include::sections/11-itip.adoc[]
+
+include::sections/12-caldav.adoc[]
+
+include::sections/13-vpatch.adoc[]
+
+include::sections/14-security.adoc[]
+
+include::sections/15-privacy.adoc[]
+
+include::sections/16-iana.adoc[]
+
+include::sections-ietf/99-references.adoc[]
+
+include::sections-ietf/aa-change-history.adoc[]
+
+include::sections/ab-acknowledgments.adoc[]
+
+include::sections/ac-examples.adoc[]
+
+include::sections/ad-patch-examples.adoc[]

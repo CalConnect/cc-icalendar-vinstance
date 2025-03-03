@@ -1,0 +1,60 @@
+[[instance-properties]]
+== Adding or Updating Properties in an Overridden Instance
+
+Any iCalendar property (other than "RECURRENCE-ID" and "INSTANCE-DELETE") defined
+in the "VINSTANCE" component (referred to here as the "instance property") is
+treated as either an addition to the generated instance, or as an update of an
+existing property in the generated instance. A "INSTANCE-ACTION"
+<<instanceaction>> property parameter can be defined on instance properties and
+is used to control how they are processed. The following rules are used to
+process such properties:
+
+. If the instance property does not contain an "INSTANCE-ACTION" property
+parameter, or contains an "INSTANCE-ACTION" property parameter with the default
+value "BYNAME", then all properties with the same name in the generated instance
+are replaced by the instance property.
+
+. If the instance property contains an "INSTANCE-ACTION" property parameter with
+the value "CREATE", then the instance property is added to the generated instance.
+
+. If the instance property contains an "INSTANCE-ACTION" property parameter with
+the value "UPDATE", then all properties with the same name and same value in the
+generated instance have their parameters updated or removed as follows:
+.. Any parameter name appended to the "UPDATE" parameter value with a "~"
+separator is used to remove matching parameters from the derived instance.
+.. Any parameters, other than "INSTANCE-ACTION", replace any parameters with the
+same name in the derived instance, or are added to the derived instance if no
+there is no parameter with the same name.
+
+. If the instance property contains an "INSTANCE-ACTION" property parameter with
+the value starting with "BYPARAM", then all properties with the same name and a
+property parameter that matches the one that is part of the "INSTANCE-ACTION"
+property value, in the generated instance are replaced by the instance property.
+
+The "INSTANCE-ACTION=BYNAME" operation is used for adding or updating "singleton"
+properties - properties that only appear once in a given iCalendar component
+(e.g., "DTSTART", "DTEND", "LOCATION", etc).
+
+The "INSTANCE-ACTION=CREATE" operation is used for adding "multi-occurring"
+properties - properties that can appear more than once in a given iCalendar
+component (e.g., "ATTENDEE", "ATTACH", "EXDATE", etc).
+
+The "INSTANCE-ACTION=UPDATE" operation is used for updating parameters on a
+specific "multi-occurring" property that can be uniquely identified by its value
+(e.g., the "ATTENDEE" property can appear multiple times in a "VEVENT" component,
+but each property will have a unique value in that component). This operation
+cannot be used when the value of the property is being changed. Instead, the
+"INSTANCE-ACTION=BYPARAM" operation can be used to identify the property being
+replaced.
+
+The "INSTANCE-ACTION=BYPARAM" operation is used for updating a specific
+"multi-occurring" property that can be uniquely identified by a parameter value
+that is the same as one in the instance property.
+
+There may be some situations where a multi-occurring property cannot be uniquely
+identified. In such cases, the solution to updating one or more of them is to use
+an "INSTANCE-ACTION=BYNAME" to replace all the existing properties with one new
+one, then use "INSTANCE-ACTION=CREATE" to add back others that are unchanged or
+also being updated. Whilst this is not ideal, it is anticipated that these
+situations can be avoided by adding appropriate property parameters with unique
+values to help disambiguate the multi-occurring properties.

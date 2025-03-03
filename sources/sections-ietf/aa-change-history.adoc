@@ -1,0 +1,18 @@
+[appendix]
+== metanorma-extension
+
+=== document history
+
+[EDITOR]
+====
+To be removed by RFC Editor before publication
+====
+
+[source,yaml]
+----
+- date:
+  - type: updated
+  edition: draft-daboo-icalendar-vinstance-00
+  amend:
+    - description: Allow PATCH to be used to update sub-components.
+----

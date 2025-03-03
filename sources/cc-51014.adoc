@@ -1,0 +1,62 @@
+= The iCalendar VINSTANCE Component
+:docnumber: 51014
+:copyright-year: 2016
+:language: en
+:doctype: standard
+:edition: 1
+:status: working-draft
+:revdate: 2016-10-28
+:published-date: 2016-10-28
+:technical-committee: CALENDAR
+:fullname: Cyrus Daboo
+:surname: Daboo
+:givenname: Cyrus
+:affiliation: Apple Inc.
+:mn-document-class: cc
+:mn-output-extensions: xml,html,pdf,rxl
+:local-cache-only:
+:data-uri-image:
+
+include::sections/00-abstract.adoc[]
+
+include::sections/01-intro.adoc[]
+
+include::sections/01-scope.adoc[]
+
+include::sections/02-norm-refs.adoc[]
+
+include::sections/03-terms.adoc[]
+
+include::sections/03-overview.adoc[]
+
+include::sections/04-vinstance-component.adoc[]
+
+include::sections/05-instance-components.adoc[]
+
+include::sections/06-instance-properties.adoc[]
+
+include::sections/07-instance-delete.adoc[]
+
+include::sections/08-path.adoc[]
+
+include::sections/09-extensions.adoc[]
+
+include::sections/10-conversion.adoc[]
+
+include::sections/11-itip.adoc[]
+
+include::sections/12-caldav.adoc[]
+
+include::sections/13-vpatch.adoc[]
+
+include::sections/14-security.adoc[]
+
+include::sections/15-privacy.adoc[]
+
+include::sections/16-iana.adoc[]
+
+include::sections/ab-acknowledgments.adoc[]
+
+include::sections/ac-examples.adoc[]
+
+include::sections/ad-patch-examples.adoc[]
