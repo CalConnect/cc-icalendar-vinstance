@@ -1,0 +1,201 @@
+[appendix]
+== Patch Examples
+
+[[example_patch_1]]
+=== Implicit override using patch
+
+This example shows the implicit addition of an overridden component
+which has only its "SUMMARY" property changed, via a patch operation.
+
+Before:
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:test
+VERSION:2.0
+BEGIN:VEVENT
+UID:1234
+DTSTART;VALUE=DATE:20160902
+DURATION:PT1H
+SUMMARY:Master component
+LOCATION:My office
+RRULE:FREQ=DAILY
+END:VEVENT
+END:VCALENDAR
+----
+
+Patch:
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:test
+VERSION:2.0
+BEGIN:VPATCH
+UID:DFB887F7-9D1A-4FB2-912B-C91A6203DB8E
+DTSTAMP:20160907T111100Z
+BEGIN:PATCH
+PATCH-TARGET:/VCALENDAR/VEVENT[RID=20160903]
+SUMMARY:Override second instance
+END:PATCH
+END:VPATCH
+END:VCALENDAR
+----
+
+After:
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:test
+VERSION:2.0
+BEGIN:VEVENT
+UID:1234
+DTSTART;VALUE=DATE:20160902
+DURATION:PT1H
+SUMMARY:Master component
+LOCATION:My office
+RRULE:FREQ=DAILY
+END:VEVENT
+BEGIN:VEVENT
+UID:1234
+RECURRENCE-ID;VALUE=DATE:20160903
+DTSTART;VALUE=DATE:20160903
+DURATION:PT1H
+SUMMARY:Override second instance
+LOCATION:My office
+END:VEVENT
+END:VCALENDAR
+----
+
+[[example_patch_2]]
+=== Explicit VINSTANCE override using patch
+
+This example shows the explicit addition of an overridden instance
+using a "VINSTANCE" component, via a patch operation.
+
+Before:
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:test
+VERSION:2.0
+BEGIN:VEVENT
+UID:1234
+DTSTART;VALUE=DATE:20160902
+DURATION:PT1H
+SUMMARY:Master component
+LOCATION:My office
+RRULE:FREQ=DAILY
+END:VEVENT
+END:VCALENDAR
+----
+
+Patch:
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:test
+VERSION:2.0
+BEGIN:VPATCH
+UID:DFB887F7-9D1A-4FB2-912B-C91A6203DB8E
+DTSTAMP:20160907T111100Z
+BEGIN:PATCH
+PATCH-TARGET:/VCALENDAR/VEVENT
+BEGIN:VINSTANCE
+RECURRENCE-ID;VALUE=DATE:20160903
+SUMMARY:Override second instance
+END:VINSTANCE
+END:PATCH
+END:VPATCH
+END:VCALENDAR
+----
+
+After:
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:test
+VERSION:2.0
+BEGIN:VEVENT
+UID:1234
+DTSTART;VALUE=DATE:20160902
+DURATION:PT1H
+SUMMARY:Master component
+LOCATION:My office
+RRULE:FREQ=DAILY
+BEGIN:VINSTANCE
+RECURRENCE-ID;VALUE=DATE:20160903
+SUMMARY:Override second instance
+END:VINSTANCE
+END:VEVENT
+END:VCALENDAR
+----
+
+[[example_patch_3]]
+=== Implicit VINSTANCE override using patch
+
+This example shows the implicit addition of an overridden instance
+using a "VINSTANCE" component, via a patch operation.
+
+Before:
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:test
+VERSION:2.0
+BEGIN:VEVENT
+UID:1234
+DTSTART;VALUE=DATE:20160902
+DURATION:PT1H
+SUMMARY:Master component
+LOCATION:My office
+RRULE:FREQ=DAILY
+END:VEVENT
+END:VCALENDAR
+----
+
+Patch:
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:test
+VERSION:2.0
+BEGIN:VPATCH
+UID:DFB887F7-9D1A-4FB2-912B-C91A6203DB8E
+DTSTAMP:20160907T111100Z
+BEGIN:PATCH
+PATCH-TARGET:/VCALENDAR/VEVENT[RID=20160903]
+SUMMARY:Override second instance
+END:PATCH
+END:VPATCH
+END:VCALENDAR
+----
+
+After:
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:test
+VERSION:2.0
+BEGIN:VEVENT
+UID:1234
+DTSTART;VALUE=DATE:20160902
+DURATION:PT1H
+SUMMARY:Master component
+LOCATION:My office
+RRULE:FREQ=DAILY
+BEGIN:VINSTANCE
+RECURRENCE-ID;VALUE=DATE:20160903
+SUMMARY:Override second instance
+END:VINSTANCE
+END:VEVENT
+END:VCALENDAR
+----

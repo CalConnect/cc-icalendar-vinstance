@@ -1,0 +1,17 @@
+== Use with iCalendar VPATCH
+
+[draft-patch] defines how iCalendar data can updated using a "patch" component that
+defines the changes between the original and updated data. This generic mechanism
+works with the new "VINSTANCE" representation introduced by this specification.
+
+However, [draft-patch] does define an "implicit" recurrence override mechanism,
+whereby a patch operation can implicitly create an overridden component in an
+iCalendar object by only including components and/or properties that are different
+from the generated instance. An example of an implicit override patch is shown in
+<<example_patch_1>>. Whilst it is possible to explicitly add a "VINSTANCE" component
+using a patch operation (as shown in <<example_patch_2>>), it would be more efficient
+to allow patch processing engines to create "VINSTANCE" components, rather than full
+overridden components, when doing an implicit patch operation. This specification
+extends [draft-patch] to allow patch processing engines to implement an implicit
+recurrence override patch operation as the addition of appropriate "VINSTANCE"
+components to the master component (an example is shown in <<example_patch_3>>).

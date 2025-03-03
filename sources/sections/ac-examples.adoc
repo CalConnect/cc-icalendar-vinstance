@@ -1,0 +1,155 @@
+[appendix]
+== Examples
+
+=== Overridden instance with just the SUMMARY changed
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:test
+VERSION:2.0
+BEGIN:VEVENT
+UID:1234
+DTSTART;VALUE=DATE:20160902
+DURATION:PT1H
+SUMMARY:Master component
+LOCATION:My office
+RRULE:FREQ=DAILY
+BEGIN:VINSTANCE
+RECURRENCE-ID;VALUE=DATE:20160903
+SUMMARY:Override second instance
+END:VINSTANCE
+END:VEVENT
+END:VCALENDAR
+----
+
+=== Overridden instance with a time change and an alarm added
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:test
+VERSION:2.0
+BEGIN:VEVENT
+UID:1234
+DTSTART:20160902T120000Z
+DURATION:PT1H
+SUMMARY:Master component
+LOCATION:My office
+RRULE:FREQ=DAILY
+BEGIN:VINSTANCE
+RECURRENCE-ID:20160903T120000Z
+DTSTART:20160903T130000Z
+BEGIN:VALARM
+UID:4567
+ACTION:DISPLAY
+TRIGGER:-PT30M
+DESCRIPTION:Time to leave
+END:VALARM
+END:VINSTANCE
+END:VEVENT
+END:VCALENDAR
+----
+
+=== Overridden instance with a different trigger time for the alarm
+
+This variant shows the "VALARM" being updated by using a "PATCH" component as
+opposed to include the entire "VALARM" component.
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:test
+VERSION:2.0
+BEGIN:VEVENT
+UID:1234
+DTSTART:20160902T120000Z
+DURATION:PT1H
+SUMMARY:Master component
+LOCATION:My office
+RRULE:FREQ=DAILY
+BEGIN:VALARM
+UID:4567
+ACTION:DISPLAY
+TRIGGER:-PT30M
+DESCRIPTION:Time to leave
+END:VALARM
+BEGIN:VINSTANCE
+RECURRENCE-ID:20160903T120000Z
+BEGIN:PATCH
+PATCH-TARGET:/VALARM[UID=4567]
+TRIGGER:-PT5M
+END:PATCH
+END:VINSTANCE
+END:VEVENT
+END:VCALENDAR
+----
+
+=== Overridden instance without the alarm
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:test
+VERSION:2.0
+BEGIN:VEVENT
+UID:1234
+DTSTART:20160902T120000Z
+DURATION:PT1H
+SUMMARY:Master component
+LOCATION:My office
+RRULE:FREQ=DAILY
+BEGIN:VALARM
+UID:4567
+ACTION:DISPLAY
+TRIGGER:-PT30M
+DESCRIPTION:Time to leave
+END:VALARM
+BEGIN:VINSTANCE
+RECURRENCE-ID:20160903T120000Z
+INSTANCE-DELETE:/VALARM[UID=4567]
+END:VINSTANCE
+END:VEVENT
+END:VCALENDAR
+----
+
+=== Two overridden instances with parameter updates
+
+This examples shows two overridden instances. The first one covers the case where
+an attendee has accepted all but one instance of a recurring meeting, with the
+one instance being declined. The second one covers the case where an attendee has
+responded only to one instance of a recurring meeting, with the other instances
+still waiting for a response.
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:test
+VERSION:2.0
+BEGIN:VEVENT
+UID:1234
+DTSTART:20160902T120000Z
+DURATION:PT1H
+SUMMARY:Master component
+LOCATION:My office
+RRULE:FREQ=DAILY
+ORGANIZER;CN=Cyrus Daboo:mailto:cyrus@example.com
+ATTENDEE;CN=Cyrus Daboo;PARTSTAT=ACCEPTED:
+ mailto:cyrus@example.com
+ATTENDEE;CN=Mike Douglass;PARTSTAT=NEEDS-ACTION;
+ RSVP=TRUE:mailto:mike@example.com
+ATTENDEE;CN=Ken Murchison;PARTSTAT=ACCEPTED:
+ mailto:ken@example.com
+BEGIN:VINSTANCE
+RECURRENCE-ID:20160903T120000Z
+ATTENDEE;INSTANCE-ACTION=UPDATE;PARTSTAT=DECLINED:
+ mailto:ken@example.com
+END:VINSTANCE
+BEGIN:VINSTANCE
+RECURRENCE-ID:20160904T120000Z
+ATTENDEE;INSTANCE-ACTION=UPDATE~RSVP;PARTSTAT=ACCEPTED:
+ mailto:mike@example.com
+END:VINSTANCE
+END:VEVENT
+END:VCALENDAR
+----

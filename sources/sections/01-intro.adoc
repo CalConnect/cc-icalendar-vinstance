@@ -1,0 +1,17 @@
+== Introduction
+
+The iCalendar <<RFC5545>> data format is in widespread use to represent calendar data.
+iCalendar has a data model that supports the concept of recurring, or repeating,
+events (or other types of objects such as tasks). With repeating events, it is often
+the case that one particular instance may differ from the rest. In that case
+iCalendar requires that all the data for that event be included, even though only a
+small portion of it may be different. For long lived recurring events with lots of
+attendees present, this can often result in a significant increase in the size of
+the iCalendar data as many instances get overridden.
+
+This specification updates the iCalendar data model to support a new iCalendar
+component that can be used to represent just the changes in an overridden instance,
+rather than having to include everything describing it. This can significantly
+reduce the size of the iCalendar data, leading to reductions in network I/O (with
+resultant savings in battery usage on mobile devices), and storage requirements, on
+clients, servers, and associated databases.

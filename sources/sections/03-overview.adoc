@@ -1,0 +1,94 @@
+== Overview
+
+Recurring events (or other types of component) in iCalendar are defined by the
+presence of "RRULE", "RDATE", and "EXDATE" properties in a "master component".
+Those rules produce a set of "generated instances". "Generated instances" do not
+need to have a representation in the iCalendar data, as their content can be
+inferred from the "master component". In some cases specific "generated
+instances" are changed, resulting in an "overridden instance". An "overridden
+instance" is represented in iCalendar as an "overridden component", which has the
+same "UID" property value as the "master component", and a "RECURRENCE-ID"
+property whose value matches the start time of the corresponding "generated
+instance" (which can be different from the actual start time of the "overridden
+instance").
+
+For example, consider the following daily recurring event, with no overridden
+instances. This event defines a set of generated instances for 20160902,
+20160903, 20160904, etc.
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:test
+VERSION:2.0
+BEGIN:VEVENT
+UID:1234
+DTSTART;VALUE=DATE:20160902
+DURATION:PT1H
+SUMMARY:Master component
+LOCATION:My office
+RRULE:FREQ=DAILY
+END:VEVENT
+END:VCALENDAR
+----
+
+If the summary of the second instance needs to be changed, the resulting
+iCalendar object would be:
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:test
+VERSION:2.0
+BEGIN:VEVENT
+UID:1234
+DTSTART;VALUE=DATE:20160902
+DURATION:PT1H
+SUMMARY:Master component
+LOCATION:My office
+RRULE:FREQ=DAILY
+END:VEVENT
+BEGIN:VEVENT
+UID:1234
+RECURRENCE-ID;VALUE=DATE:20160903
+DTSTART;VALUE=DATE:20160903
+DURATION:PT1H
+SUMMARY:Override second instance
+LOCATION:My office
+END:VEVENT
+END:VCALENDAR
+----
+
+As can be seen, the overridden component for 20160903 duplicates many iCalendar
+properties from the master component, with the "SUMMARY" property being
+different, "RECURRENCE-ID" added, and "DTSTART" adjusted to the start time of the
+instance. All the other properties are the same as the corresponding ones in the
+master component. Using the new representation described by this specification,
+this iCalendar object would appear as:
+
+[source%unnumbered]
+----
+BEGIN:VCALENDAR
+PRODID:test
+VERSION:2.0
+BEGIN:VEVENT
+UID:1234
+DTSTART;VALUE=DATE:20160902
+DURATION:PT1H
+SUMMARY:Master component
+LOCATION:My office
+RRULE:FREQ=DAILY
+BEGIN:VINSTANCE
+RECURRENCE-ID;VALUE=DATE:20160903
+SUMMARY:Override second instance
+END:VINSTANCE
+END:VEVENT
+END:VCALENDAR
+----
+
+In this case the "VINSTANCE" component is used to encapsulate just those
+iCalendar properties that are different from the generated instance - just
+"SUMMARY" in this case. The new representation is just over 80% of the size of
+the traditional representation, giving a small, but not insignificant, reduction
+in size. But as more overrides are needed, or as more properties are added to the
+master component, the savings will increase dramatically.
