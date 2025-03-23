@@ -1,10 +1,11 @@
 [[instance-delete]]
 == Deleting Components or Properties from an Overridden Instance
 
-The "INSTANCE-DELETE" property (defined in <<instancedelete>>) is used to indicate
-deletion of iCalendar elements from the generated instance. As such, the value of
-the "INSTANCE-DELETE" property is always a relative path (see <<path>>) that refers
-to an element that is an immediate "child" of the generated instance.
+The "INSTANCE-DELETE" property (defined in <<instancedelete>>) is used to
+indicate deletion of iCalendar elements from the generated instance. As such,
+the value of the "INSTANCE-DELETE" property is always a relative path (see
+<<path>>) that refers to an element that is an immediate "child" of the
+generated instance.
 
 The following operations are supported:
 

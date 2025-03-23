@@ -38,8 +38,8 @@ registry defined in <<RFC5545,section=8.3.3>>:
 
 === Parameter Value Registry
 
-A new IANA registry for iCalendar elements has been added. Additional codes MAY be
-used, provided the process described in <<RFC5545,section=8.2.1>> is used to
+A new IANA registry for iCalendar elements has been added. Additional codes MAY
+be used, provided the process described in <<RFC5545,section=8.2.1>> is used to
 register them, using the template in <<RFC5545,section=8.2.6>>.
 
 ==== Instance Action Registry

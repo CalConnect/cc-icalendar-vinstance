@@ -1,7 +1,7 @@
 == Use with CalDAV and HTTP
 
-The CalDAV <<RFC4791>> calendar access protocol allows clients and servers to exchange
-iCalendar data.
+The CalDAV <<RFC4791>> calendar access protocol allows clients and servers to
+exchange iCalendar data.
 
-TBD define protocol changes required in clients and servers to allow negotiated use of
-VINSTANCE.
+TBD define protocol changes required in clients and servers to allow negotiated
+use of VINSTANCE.

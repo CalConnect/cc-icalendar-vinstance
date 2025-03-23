@@ -6,8 +6,8 @@ value that is unique (at least within that master component). This allows such
 sub-components to be easily identified for the purposes of indicating whether a
 "VINSTANCE" is adding, updating, or deleting a sub-component.
 
-Any iCalendar component defined in the "VINSTANCE" component (referred to here as
-the "instance component"), other than a "PATCH" component [draft-patch], is
+Any iCalendar component defined in the "VINSTANCE" component (referred to here
+as the "instance component"), other than a "PATCH" component [draft-patch], is
 treated as either an addition to the generated instance, or as an update of an
 existing component in the generated instance, as follows:
 
@@ -19,17 +19,17 @@ component is an addition to the generated instance.
 value that matches that of the instance component, then the instance component
 replaces the matching one in the generated instance.
 
-Alternatively, a sub-component can be "incrementally" updated by use of a "PATCH"
-component [draft-patch] that targets the sub-component. A "PATCH" component is
-created by determining the difference between the sub-component in the overridden
-instance and the matching sub-component in the generated instance. The
-"PATCH-TARGET" property value in the "PATCH" component is specified as a path
-relative to the overridden component targeting the sub-component by its "UID"
-property value (e.g., if a "VALARM" component inside a "VEVENT" component is
-being updated, the "PATCH-TARGET" property value would be "/VALARM[UID=1234]"
-(assuming that the "UID" property value of the sub-component being updated is
-"1234"). The "PATCH" component is then added as a sub-component of the
-"VINSTANCE" component representing the overridden instance.
+Alternatively, a sub-component can be "incrementally" updated by use of a
+"PATCH" component [draft-patch] that targets the sub-component. A "PATCH"
+component is created by determining the difference between the sub-component in
+the overridden instance and the matching sub-component in the generated
+instance. The "PATCH-TARGET" property value in the "PATCH" component is
+specified as a path relative to the overridden component targeting the
+sub-component by its "UID" property value (e.g., if a "VALARM" component inside
+a "VEVENT" component is being updated, the "PATCH-TARGET" property value would
+be "/VALARM[UID=1234]" (assuming that the "UID" property value of the
+sub-component being updated is "1234"). The "PATCH" component is then added as a
+sub-component of the "VINSTANCE" component representing the overridden instance.
 
 When expanding a "VINSTANCE" component into an overridden component, any "PATCH"
 sub-components are used to update sub-components in the generated instance, by

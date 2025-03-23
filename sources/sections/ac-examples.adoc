@@ -115,11 +115,11 @@ END:VCALENDAR
 
 === Two overridden instances with parameter updates
 
-This examples shows two overridden instances. The first one covers the case where
-an attendee has accepted all but one instance of a recurring meeting, with the
-one instance being declined. The second one covers the case where an attendee has
-responded only to one instance of a recurring meeting, with the other instances
-still waiting for a response.
+This examples shows two overridden instances. The first one covers the case
+where an attendee has accepted all but one instance of a recurring meeting, with
+the one instance being declined. The second one covers the case where an
+attendee has responded only to one instance of a recurring meeting, with the
+other instances still waiting for a response.
 
 [source%unnumbered]
 ----

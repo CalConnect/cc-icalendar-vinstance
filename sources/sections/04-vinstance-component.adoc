@@ -3,8 +3,8 @@
 
 This specification defines the new "VINSTANCE" component, which is used to
 represent just the differences between a generated instance, derived from the
-master component, and the actual overridden instance that will be used instead of
-the generated instance.
+master component, and the actual overridden instance that will be used instead
+of the generated instance.
 
 "VINSTANCE" components MUST only appear as sub-components within master
 components (e.g., they can only appear as sub-components of components that
