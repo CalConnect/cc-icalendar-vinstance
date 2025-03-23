@@ -4,8 +4,8 @@
 [[example_patch_1]]
 === Implicit override using patch
 
-This example shows the implicit addition of an overridden component
-which has only its "SUMMARY" property changed, via a patch operation.
+This example shows the implicit addition of an overridden component which has
+only its "SUMMARY" property changed, via a patch operation.
 
 Before:
 
@@ -72,8 +72,8 @@ END:VCALENDAR
 [[example_patch_2]]
 === Explicit VINSTANCE override using patch
 
-This example shows the explicit addition of an overridden instance
-using a "VINSTANCE" component, via a patch operation.
+This example shows the explicit addition of an overridden instance using a
+"VINSTANCE" component, via a patch operation.
 
 Before:
 
@@ -139,8 +139,8 @@ END:VCALENDAR
 [[example_patch_3]]
 === Implicit VINSTANCE override using patch
 
-This example shows the implicit addition of an overridden instance
-using a "VINSTANCE" component, via a patch operation.
+This example shows the implicit addition of an overridden instance using a
+"VINSTANCE" component, via a patch operation.
 
 Before:
 

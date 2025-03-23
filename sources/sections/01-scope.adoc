@@ -1,4 +1,4 @@
 == Scope
 
-//This document specifies a new iCalendar component that provides a more compact
-//representation of overridden recurrence instances.
+This document updates the iCalendar (<<RFC5545>>) specification to allow a more
+compact representation of overridden recurrence instances.

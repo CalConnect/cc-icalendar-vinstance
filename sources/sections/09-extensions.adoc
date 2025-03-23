@@ -37,10 +37,10 @@ vinstanceprop = *(
 other-prop  = ( iana-prop / x-prop )
 ----
 
-Description:: This component is used to define an overridden instance of a master
-component that can include changes to the generated instance, such as component
-or property additions updates, or deletions. See <<vinstance-component>> for
-details.
+Description:: This component is used to define an overridden instance of a
+master component that can include changes to the generated instance, such as
+component or property additions updates, or deletions. See
+<<vinstance-component>> for details.
 
 [[instancedelete]]
 === INSTANCE-DELETE Property
@@ -55,12 +55,13 @@ Value Type:: TEXT
 Property Parameters:: IANA and nonstandard property parameters can be specified
 on this property.
 
-Conformance:: This property can be specified within a "VINSTANCE" component only.
+Conformance:: This property can be specified within a "VINSTANCE" component
+only.
 
 Description:: This property is used to match iCalendar components or properties
-that will be deleted. The path value is always a relative path for only immediate
-components and properties within the generated instance, and interpreted as
-described in <<instance-delete>>.
+that will be deleted. The path value is always a relative path for only
+immediate components and properties within the generated instance, and
+interpreted as described in <<instance-delete>>.
 
 Format Definition:: This property is defined by the following notation:
 +
@@ -89,8 +90,8 @@ Parameter Name:: INSTANCE-ACTION
 
 Purpose:: To specify whether the property should be added or replaced.
 
-Description:: This property parameter can be specified on properties contained in
-a "VINSTANCE" component and MUST NOT be specified on properties outside of a
+Description:: This property parameter can be specified on properties contained
+in a "VINSTANCE" component and MUST NOT be specified on properties outside of a
 "VINSTANCE" component. This property parameter specifies whether the associated
 property should be added to the generated instance or should replace existing
 properties in the generated instance. In the latter case, the property parameter
