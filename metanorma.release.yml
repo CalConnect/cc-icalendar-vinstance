@@ -1,3 +1,5 @@
+# metanorma.release.yml — cc-icalendar-vinstance
+
 documents:
-  - source: sources/cc-51014.adoc
-  - source: sources/draft-daboo-icalendar-vinstance.adoc
+  - pattern: "cc-*"
+    channels: [public/standards]
